@@ -16,7 +16,7 @@ import 'package:chip_list/chip_list.dart';
 
 Check out the `/example` folder for a minimal working demo of the package in action.
 
-![](example\example_gif.gif)
+![](example_gif.gif)
 
 
 But, briefly:
