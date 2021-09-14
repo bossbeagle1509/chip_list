@@ -36,7 +36,7 @@ ChipList(
 
 Found an issue ? [Please let me know !](https://github.com/bossbeagle1509/chip_list/issues)
 
-Upcoming features:
+## Upcoming features:
 
 1. Transition animations
 2. Per item text and background colorization
