@@ -1,3 +1,4 @@
+
 library chip_list;
 
 import 'package:flutter/material.dart';
@@ -57,9 +58,9 @@ class ChipList extends StatefulWidget {
   final Color inactiveTextColor;
 
   /// Initial `index` that must be selected.
-  /// Use this to sync this widget with
+  /// Useful to sync this widget with
   /// others if need be.
-  List<int> listOfChipIndicesCurrentlySeclected;
+  final List<int> listOfChipIndicesCurrentlySeclected;
 
   /// For any styling needs.
   /// Using [color] here is pointless
