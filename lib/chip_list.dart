@@ -39,7 +39,7 @@ class ChipList extends StatefulWidget {
   final OnToggle? extraOnToggle;
 
   /// List of ChoiceChip names in order of building them.
-  final List listOfChipNames;
+  final List<String> listOfChipNames;
 
   /// If multiple [ChoiceChips] can be selected at once.
   /// Defaults to [false].

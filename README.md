@@ -1,36 +1,42 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
-
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+Creates a list of `ChoiceChips`. Also allows for selecting multiple chips at once and exposes all values to use in case you wish to use the widget in sync with others.
+
+See `/example/main.dart` for an example on how to use the state of the list for updating the state of other widgets.
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Import it !
+
+```dart
+import 'package:chip_list/chip_list.dart';
+```
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+Check out the `/example` folder for a minimal working demo of the package in action.
+
+![](example\example_gif.gif)
+
+
+But, briefly:
 
 ```dart
-const like = 'sample';
+ChipList(
+    listOfChipNames: _theListOfStringsYouWishToDisplay,
+    activeBgColor: _anActiveBackgroundColor,
+    inactiveBgColor: _anInactiveBackgroundColor,
+    activeTextColor:_anAactiveTextColor,
+    inactiveTextColor: _anInactiveTextColor,
+    listOfChipIndicesCurrentlySeclected: [index/indices depending on the use case],
+),
 ```
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+Found an issue ? [Please let me know !](https://github.com/bossbeagle1509/chip_list/issues)
+
+Upcoming features:
+
+1. Transition animations
+2. Per item text and background colorization
