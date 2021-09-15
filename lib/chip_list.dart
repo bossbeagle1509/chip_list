@@ -1,13 +1,5 @@
-
 library chip_list;
-
 import 'package:flutter/material.dart';
-
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
 
 typedef OnToggle = void Function(int index);
 
