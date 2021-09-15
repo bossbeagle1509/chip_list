@@ -1,6 +1,6 @@
 name: chip_list
 description: Makes creating a list of ChoiceChip-s a breeze. Super customizable as well.
-version: 0.0.1+4
+version: 0.0.1+5
 homepage: https://github.com/bossbeagle1509/chip_list
 
 environment:

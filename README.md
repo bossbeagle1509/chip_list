@@ -1,6 +1,6 @@
 ## Features
 
-Creates a list of `ChoiceChips`. Also allows for selecting multiple chips at once and exposes some values to use in case you wish to use the widget in sync with others.
+Creates a list of `ChoiceChips`. Also allows for selecting multiple chips at once and allows use in sync with other widgets.
 
 See `/example/main.dart` for an example on how to use the state of the list for updating the state of other widgets.
 
@@ -18,16 +18,16 @@ Import it !
 import 'package:chip_list/chip_list.dart';
 ```
 
-***
+---
+
+## Demo
+
+![](https://raw.githubusercontent.com/bossbeagle1509/chip_list/main/example_gif.gif)
 
 ## Usage
 
-Check out the `/example` folder for a minimal working demo of the package in action.
-
-![](example_gif.gif)
-
-
 `/example/main.dart`:
+
 ```dart
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -115,9 +115,7 @@ class _HomePageState extends State<HomePage> {
 }
 ```
 
-***
-
-But, briefly:
+In, brief:
 
 ```dart
 ChipList(
@@ -130,14 +128,10 @@ ChipList(
 ),
 ```
 
-***
-
 ## Additional information
 
 Found an issue ? [Please let me know !](https://github.com/bossbeagle1509/chip_list/issues)
 Feel like creating a PR ? Yes please ! All contributions are welcome :)
-
-***
 
 ## Upcoming features:
 
