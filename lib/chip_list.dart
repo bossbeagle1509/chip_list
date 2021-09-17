@@ -249,9 +249,9 @@ class _ChipListState extends State<ChipList> {
                     borderRadius: BorderRadius.circular(15),
                     side: BorderSide(color: Theme.of(context).primaryColor),
                   ),
-                  backgroundColor: _tileColorizer(index),
+                  backgroundColor: widget.inactiveBgColor,
                   selected: _checkChipSelectionStatus(index),
-                  selectedColor: Theme.of(context).primaryColor,
+                  selectedColor: _tileColorizer(index),
                   onSelected: (val) {
                     // update other chips depending on value of [supportsMultiSelect]
                     _handleOnSelected(index);
@@ -302,9 +302,9 @@ class _ChipListState extends State<ChipList> {
                       borderRadius: BorderRadius.circular(15),
                       side: BorderSide(color: Theme.of(context).primaryColor),
                     ),
-                    backgroundColor: _tileColorizer(index),
+                    backgroundColor: widget.inactiveBgColor,
                     selected: _checkChipSelectionStatus(index),
-                    selectedColor: Theme.of(context).primaryColor,
+                    selectedColor: _tileColorizer(index),
                     onSelected: (val) {
                       // update other chips depending on value of [supportsMultiSelect]
                       _handleOnSelected(index);

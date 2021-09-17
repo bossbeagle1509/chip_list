@@ -13,3 +13,7 @@
 ## 0.1.1+5
 
 * Added support for wrapping the chip_list.
+
+## 0.1.2+5
+
+* Patch bug in background color of a chip
