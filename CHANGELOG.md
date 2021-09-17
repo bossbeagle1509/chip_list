@@ -9,3 +9,7 @@
 ## 0.0.1+5
 
 * Update README once more.
+
+## 0.1.1+5
+
+* Added support for wrapping the chip_list.

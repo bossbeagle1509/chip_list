@@ -2,14 +2,14 @@
 
 Creates a list of `ChoiceChips`. Also allows for selecting multiple chips at once and allows use in sync with other widgets.
 
-See `/example/main.dart` for an example on how to use the state of the list for updating the state of other widgets.
+See `/example/main.dart` for an example on how to use the state of the list for updating the state of other widgets, and using the `shouldWrap` property.
 
 ## Getting started
 
 Depend on it ! Add this to your `pubspec.yaml`
 
 ```dart
-chip_list: ^0.0.1+4
+chip_list: ^0.1.1+5
 ```
 
 Import it !
@@ -115,7 +115,7 @@ class _HomePageState extends State<HomePage> {
 }
 ```
 
-In, brief:
+## In, brief:
 
 ```dart
 ChipList(
@@ -127,6 +127,10 @@ ChipList(
     listOfChipIndicesCurrentlySeclected: [index/indices depending on the use case],
 ),
 ```
+
+## Note - Wrapping the contents of `ChipList`
+If you want to wrap the `ChipList`, then set `shouldWrap` to `true`. 
+You can then use all the properties of a typical `Wrap` widget to further customize appearance.
 
 ## Additional information
 
