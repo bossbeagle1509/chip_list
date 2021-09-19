@@ -21,3 +21,7 @@
 ## 0.2.2+5
 
 * Added support for per item border radius and border color customization.
+
+## 0.2.2+6
+
+* Update README.md
