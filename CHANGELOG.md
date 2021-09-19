@@ -17,3 +17,7 @@
 ## 0.1.2+5
 
 * Patch bug in background color of a chip
+
+## 0.2.2+5
+
+* Added support for per item border radius and border color customization.
