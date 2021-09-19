@@ -12,7 +12,7 @@ typedef OnToggle = void Function(int index);
 /// Use [supportsMultiSelect] if
 /// multiple chips can be selected at once.
 class ChipList extends StatefulWidget {
-  ChipList({
+  const ChipList({
     Key? key,
     required this.listOfChipNames,
     required this.activeBgColor,
@@ -20,8 +20,10 @@ class ChipList extends StatefulWidget {
     required this.activeTextColor,
     required this.inactiveTextColor,
     required this.listOfChipIndicesCurrentlySeclected,
-    this.supportsMultiSelect = false,
     this.style,
+    this.borderColorList = const [Colors.white],
+    this.borderRadiiList = const [15],
+    this.supportsMultiSelect = false,
     this.extraOnToggle,
     this.shouldWrap = false,
     this.scrollPhysics,
@@ -118,7 +120,7 @@ class ChipList extends StatefulWidget {
 
   /// [runSpacing] used, if [shouldWrap] is [true],
   ///
-  /// How much space to place between the 
+  /// How much space to place between the
   /// runs themselves in the cross axis.
   ///
   /// Defaults to 0.0.
@@ -147,6 +149,26 @@ class ChipList extends StatefulWidget {
   ///
   /// Defaults to [VerticalDirection.down].
   final VerticalDirection verticalDirection;
+
+  /// If you want to customize the
+  /// border radii of each [ChoiceChip], then set
+  /// the radius of each [ChoiceChip] here in order.
+  ///
+  /// If you want to use a single radius
+  /// for all chips, then set only one radius here.
+  ///
+  /// Deafults to 15.0.
+  final List<double> borderRadiiList;
+
+  // If you want to customize the
+  /// border color of each [ChoiceChip], then set
+  /// the color of each [ChoiceChip] here in order.
+  ///
+  /// If you want to use a single color
+  /// for all chips, then set only one color here.
+  ///
+  /// Deafults to [Colors.white].
+  final List<Color> borderColorList;
 
   @override
   _ChipListState createState() => _ChipListState();
@@ -227,6 +249,21 @@ class _ChipListState extends State<ChipList> {
   }
 
   @override
+  void initState() {
+    super.initState();
+
+    if (widget.borderColorList.length != 1 &&
+        widget.borderColorList.length != widget.listOfChipNames.length) {
+      throw 'Length of borderColorList must match the length of listOfChipNames, if overriden.';
+    }
+
+    if (widget.borderRadiiList.length != 1 &&
+        widget.borderRadiiList.length != widget.listOfChipNames.length) {
+      throw 'Length of borderRadiiList must match the length of listOfChipNames, if overriden.';
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return widget.shouldWrap
         ? Wrap(
@@ -246,8 +283,16 @@ class _ChipListState extends State<ChipList> {
                           ),
                   ),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15),
-                    side: BorderSide(color: Theme.of(context).primaryColor),
+                    borderRadius: BorderRadius.circular(
+                      widget.borderRadiiList.length == 1
+                          ? widget.borderRadiiList.first
+                          : widget.borderRadiiList[index],
+                    ),
+                    side: BorderSide(
+                      color: widget.borderColorList.length == 1
+                          ? widget.borderColorList.first
+                          : widget.borderColorList[index],
+                    ),
                   ),
                   backgroundColor: widget.inactiveBgColor,
                   selected: _checkChipSelectionStatus(index),
@@ -299,8 +344,15 @@ class _ChipListState extends State<ChipList> {
                             ),
                     ),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      side: BorderSide(color: Theme.of(context).primaryColor),
+                      borderRadius: BorderRadius.circular(
+                          widget.borderRadiiList.length == 1
+                              ? widget.borderRadiiList.first
+                              : widget.borderRadiiList[index]),
+                      side: BorderSide(
+                        color: widget.borderColorList.length == 1
+                            ? widget.borderColorList.first
+                            : widget.borderColorList[index],
+                      ),
                     ),
                     backgroundColor: widget.inactiveBgColor,
                     selected: _checkChipSelectionStatus(index),

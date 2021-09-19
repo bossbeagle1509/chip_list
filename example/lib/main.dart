@@ -55,6 +55,7 @@ class _HomePageState extends State<HomePage> {
             activeTextColor: Colors.white,
             inactiveTextColor: Theme.of(context).primaryColor,
             listOfChipIndicesCurrentlySeclected: [0],
+            borderColorList: [Theme.of(context).primaryColor],
           ),
 
           // Using [supportsMultiSelect]
@@ -73,6 +74,7 @@ class _HomePageState extends State<HomePage> {
             activeTextColor: Colors.white,
             inactiveTextColor: Theme.of(context).primaryColor,
             listOfChipIndicesCurrentlySeclected: [0],
+            borderColorList: [Colors.pink, Colors.yellow, Colors.green],
           ),
 
           // Using [extraOnToggle]
