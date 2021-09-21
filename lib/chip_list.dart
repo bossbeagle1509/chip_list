@@ -15,11 +15,11 @@ class ChipList extends StatefulWidget {
   const ChipList({
     Key? key,
     required this.listOfChipNames,
-    required this.activeBgColor,
-    required this.inactiveBgColor,
     required this.activeTextColor,
     required this.inactiveTextColor,
     required this.listOfChipIndicesCurrentlySeclected,
+    this.activeBgColorList = const [Colors.blue],
+    this.inactiveBgColorList = const [Colors.white],
     this.style,
     this.borderColorList = const [Colors.white],
     this.borderRadiiList = const [15],
@@ -52,15 +52,47 @@ class ChipList extends StatefulWidget {
   final bool supportsMultiSelect;
 
   /// The background color of an inactive [ChoiceChip]
-  final Color inactiveBgColor;
+  // If you want to customize the
+  /// background color of each [ChoiceChip], then set
+  /// the color of each one here in order.
+  ///
+  /// If you want to use a single color
+  /// for all chips, then set only one color here.
+  ///
+  /// Defults to [Colors.white].
+  final List<Color> inactiveBgColorList;
 
   /// The background color of an active [ChoiceChip]
-  final Color activeBgColor;
+  // If you want to customize the
+  /// background color of each [ChoiceChip], then set
+  /// the color of each one here in order.
+  ///
+  /// If you want to use a single color
+  /// for all chips, then set only one color here.
+  ///
+  /// Defults to [Colors.blue].
+  final List<Color> activeBgColorList;
 
   /// The text color of an active [ChoiceChip]
+  /// // If you want to customize the
+  /// active text color of each [ChoiceChip], then set
+  /// the color of each one here in order.
+  ///
+  /// If you want to use a single color
+  /// for all chips, then set only one color here.
+  ///
+  /// Defults to [Colors.white].
   final Color activeTextColor;
 
   /// The text color of an inactive [ChoiceChip]
+  ///  // If you want to customize the
+  /// inactive text color of each [ChoiceChip], then set
+  /// the color of each one here in order.
+  ///
+  /// If you want to use a single color
+  /// for all chips, then set only one color here.
+  ///
+  /// Defults to [Colors.blue].
   final Color inactiveTextColor;
 
   /// Initial `index` that must be selected.
@@ -231,9 +263,17 @@ class _ChipListState extends State<ChipList> {
     // if [supportsMultiSelect] is true
     if (widget.supportsMultiSelect) {
       if (widget.listOfChipIndicesCurrentlySeclected.contains(_index)) {
-        return widget.activeBgColor;
+        if (widget.activeBgColorList.length == 1) {
+          return widget.activeBgColorList.first;
+        } else {
+          return widget.activeBgColorList[_index];
+        }
       } else {
-        return widget.inactiveBgColor;
+        if (widget.inactiveBgColorList.length == 1) {
+          return widget.inactiveBgColorList.first;
+        } else {
+          return widget.inactiveBgColorList[_index];
+        }
       }
     }
 
@@ -241,9 +281,17 @@ class _ChipListState extends State<ChipList> {
     // chip is selected.
     else {
       if (_index == widget.listOfChipIndicesCurrentlySeclected.first) {
-        return widget.activeBgColor;
+        if (widget.activeBgColorList.length == 1) {
+          return widget.activeBgColorList.first;
+        } else {
+          return widget.activeBgColorList[_index];
+        }
       } else {
-        return widget.inactiveBgColor;
+        if (widget.inactiveBgColorList.length == 1) {
+          return widget.inactiveBgColorList.first;
+        } else {
+          return widget.inactiveBgColorList[_index];
+        }
       }
     }
   }
@@ -260,6 +308,16 @@ class _ChipListState extends State<ChipList> {
     if (widget.borderRadiiList.length != 1 &&
         widget.borderRadiiList.length != widget.listOfChipNames.length) {
       throw 'Length of borderRadiiList must match the length of listOfChipNames, if overriden.';
+    }
+
+    if (widget.activeBgColorList.length != 1 &&
+        widget.activeBgColorList.length != widget.listOfChipNames.length) {
+      throw 'Length of activeBgColorList must match the length of listOfChipNames, if overriden.';
+    }
+
+    if (widget.inactiveBgColorList.length != 1 &&
+        widget.inactiveBgColorList.length != widget.listOfChipNames.length) {
+      throw 'Length of inactiveBgColorList must match the length of listOfChipNames, if overriden.';
     }
   }
 
@@ -294,7 +352,9 @@ class _ChipListState extends State<ChipList> {
                           : widget.borderColorList[index],
                     ),
                   ),
-                  backgroundColor: widget.inactiveBgColor,
+                  backgroundColor: widget.inactiveBgColorList.length == 1
+                      ? widget.inactiveBgColorList.first
+                      : widget.inactiveBgColorList[index],
                   selected: _checkChipSelectionStatus(index),
                   selectedColor: _tileColorizer(index),
                   onSelected: (val) {
@@ -354,7 +414,9 @@ class _ChipListState extends State<ChipList> {
                             : widget.borderColorList[index],
                       ),
                     ),
-                    backgroundColor: widget.inactiveBgColor,
+                    backgroundColor: widget.inactiveBgColorList.length == 1
+                        ? widget.inactiveBgColorList.first
+                        : widget.inactiveBgColorList[index],
                     selected: _checkChipSelectionStatus(index),
                     selectedColor: _tileColorizer(index),
                     onSelected: (val) {
