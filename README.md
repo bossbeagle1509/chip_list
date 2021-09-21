@@ -24,7 +24,34 @@ import 'package:chip_list/chip_list.dart';
 
 ![](https://raw.githubusercontent.com/bossbeagle1509/chip_list/main/example_gif.gif)
 
-## Usage
+
+## In brief, the most useful features:
+
+```dart
+ChipList(
+            listOfChipNames: name-of-the-chips-in-order-of-being-built,
+            activeBgColorList: [],
+            inactiveBgColorList: [],
+            activeTextColorList: [],
+            inactiveTextColorList: [],
+            listOfChipIndicesCurrentlySeclected: [],
+          ),
+```
+
+## Features
+### Wrapping the contents of `ChipList`
+If you want to wrap the `ChipList`, then set `shouldWrap` to `true`. 
+You can then use all the properties of a typical `Wrap` widget to further customize appearance.
+
+### Setting individual colors for active/inactive background and/or text color
+If you want to have full control of the parameters specifiied above over each and every single chip, you can do so by setting the color within the `activeBgColorList`, `inactiveBgColorList`,
+`activeTextColorList` and `inactiveTextColorList` respectively, wherever appropriate. 
+
+Use a single color if you want it to be used for all chips. Otherwise, the length of the list must be equal to the length of `listOfChipNames`.
+
+Note that if you don't, then the package has defaults as specified in the documentation. (You can hover over the property 🙂 in your IDE to see more).
+
+## Example Usage
 
 `/example/main.dart`:
 
@@ -61,10 +88,10 @@ class _HomePageState extends State<HomePage> {
           ),
           ChipList(
             listOfChipNames: _dogeNames,
-            activeBgColor: Theme.of(context).primaryColor,
-            inactiveBgColor: Colors.white,
-            activeTextColor: Colors.white,
-            inactiveTextColor: Theme.of(context).primaryColor,
+            activeBgColorList: [Theme.of(context).primaryColor],
+            inactiveBgColorList: [Colors.white],
+            activeTextColorList: [Colors.white],
+            inactiveTextColorList: [Theme.of(context).primaryColor],
             listOfChipIndicesCurrentlySeclected: [0],
             borderColorList: [Theme.of(context).primaryColor],
           ),
@@ -80,10 +107,10 @@ class _HomePageState extends State<HomePage> {
           ChipList(
             listOfChipNames: _dogeNames,
             supportsMultiSelect: true,
-            activeBgColor: Theme.of(context).primaryColor,
-            inactiveBgColor: Colors.white,
-            activeTextColor: Colors.white,
-            inactiveTextColor: Theme.of(context).primaryColor,
+            activeBgColorList: [Colors.pink, Colors.yellow, Colors.green],
+            inactiveBgColorList: [Colors.white],
+            activeTextColorList: [Colors.white],
+            inactiveTextColorList: [Theme.of(context).primaryColor],
             listOfChipIndicesCurrentlySeclected: [0],
             borderColorList: [Colors.pink, Colors.yellow, Colors.green],
           ),
@@ -98,10 +125,10 @@ class _HomePageState extends State<HomePage> {
           ),
           ChipList(
             listOfChipNames: _dogeNames,
-            activeBgColor: Theme.of(context).primaryColor,
-            inactiveBgColor: Colors.white,
-            activeTextColor: Colors.white,
-            inactiveTextColor: Theme.of(context).primaryColor,
+            activeBgColorList: [Theme.of(context).primaryColor],
+            inactiveBgColorList: [Colors.white],
+            activeTextColorList: [Colors.white],
+            inactiveTextColorList: [Theme.of(context).primaryColor],
             listOfChipIndicesCurrentlySeclected: [_currentIndex],
             extraOnToggle: (val) {
               _currentIndex = val;
@@ -132,10 +159,12 @@ class _HomePageState extends State<HomePage> {
                 'be',
                 'wrapped',
               ],
-              activeBgColor: Theme.of(context).primaryColor,
-              inactiveBgColor: Colors.white,
-              activeTextColor: Colors.white,
-              inactiveTextColor: Theme.of(context).primaryColor,
+              activeBgColorList: [Theme.of(context).primaryColor],
+              inactiveBgColorList: const [
+                Colors.white,
+              ],
+              activeTextColorList: [Colors.white],
+              inactiveTextColorList: [Theme.of(context).primaryColor],
               listOfChipIndicesCurrentlySeclected: [0],
               shouldWrap: true,
               runSpacing: 10,
@@ -147,32 +176,11 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
 ```
-
-## In, brief:
-
-```dart
-ChipList(
-    listOfChipNames: _theListOfStringsYouWishToDisplay,
-    activeBgColor: _anActiveBackgroundColor,
-    inactiveBgColor: _anInactiveBackgroundColor,
-    activeTextColor:_anAactiveTextColor,
-    inactiveTextColor: _anInactiveTextColor,
-    listOfChipIndicesCurrentlySeclected: [index/indices depending on the use case],
-),
-```
-
-## Note - Wrapping the contents of `ChipList`
-If you want to wrap the `ChipList`, then set `shouldWrap` to `true`. 
-You can then use all the properties of a typical `Wrap` widget to further customize appearance.
 
 ## Additional information
 
 Found an issue ? [Please let me know !](https://github.com/bossbeagle1509/chip_list/issues)
 Feel like creating a PR ? Yes please ! All contributions are welcome :)
 
-## Upcoming features:
-
-1. Transition animations
-2. Per item text and background colorization
-3. Border customizability
