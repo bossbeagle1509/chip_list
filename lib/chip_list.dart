@@ -15,9 +15,9 @@ class ChipList extends StatefulWidget {
   const ChipList({
     Key? key,
     required this.listOfChipNames,
-    required this.activeTextColor,
-    required this.inactiveTextColor,
     required this.listOfChipIndicesCurrentlySeclected,
+    this.activeTextColorList = const [Colors.white],
+    this.inactiveTextColorList = const [Colors.blue],
     this.activeBgColorList = const [Colors.blue],
     this.inactiveBgColorList = const [Colors.white],
     this.style,
@@ -82,10 +82,10 @@ class ChipList extends StatefulWidget {
   /// for all chips, then set only one color here.
   ///
   /// Defults to [Colors.white].
-  final Color activeTextColor;
+  final List<Color> activeTextColorList;
 
   /// The text color of an inactive [ChoiceChip]
-  ///  // If you want to customize the
+  /// If you want to customize the
   /// inactive text color of each [ChoiceChip], then set
   /// the color of each one here in order.
   ///
@@ -93,7 +93,7 @@ class ChipList extends StatefulWidget {
   /// for all chips, then set only one color here.
   ///
   /// Defults to [Colors.blue].
-  final Color inactiveTextColor;
+  final List<Color> inactiveTextColorList;
 
   /// Initial `index` that must be selected.
   /// Useful to sync this widget with
@@ -102,8 +102,8 @@ class ChipList extends StatefulWidget {
 
   /// For any styling needs.
   /// Using [color] here is pointless
-  /// as it will be overwritten by [activeTextColor]
-  /// and [inactiveTextColor].
+  /// as it will be overwritten by [activeTextColorList]
+  /// and [inactiveTextColorList].
   final TextStyle? style;
 
   /// Determines if the chip_list should be wrapped.
@@ -242,9 +242,17 @@ class _ChipListState extends State<ChipList> {
     // if [supportsMultiSelect] is true
     if (widget.supportsMultiSelect) {
       if (widget.listOfChipIndicesCurrentlySeclected.contains(_index)) {
-        return widget.activeTextColor;
+        if (widget.activeTextColorList.length == 1) {
+          return widget.activeTextColorList.first;
+        } else {
+          return widget.activeTextColorList[_index];
+        }
       } else {
-        return widget.inactiveTextColor;
+        if (widget.inactiveTextColorList.length == 1) {
+          return widget.inactiveTextColorList.first;
+        } else {
+          return widget.inactiveTextColorList[_index];
+        }
       }
     }
 
@@ -252,9 +260,17 @@ class _ChipListState extends State<ChipList> {
     // chip is selected.
     else {
       if (_index == widget.listOfChipIndicesCurrentlySeclected.first) {
-        return widget.activeTextColor;
+        if (widget.activeTextColorList.length == 1) {
+          return widget.activeTextColorList.first;
+        } else {
+          return widget.activeTextColorList[_index];
+        }
       } else {
-        return widget.inactiveTextColor;
+        if (widget.inactiveTextColorList.length == 1) {
+          return widget.inactiveTextColorList.first;
+        } else {
+          return widget.inactiveTextColorList[_index];
+        }
       }
     }
   }
