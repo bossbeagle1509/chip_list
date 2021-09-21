@@ -25,3 +25,8 @@
 ## 0.2.2+6
 
 * Update README.md
+
+## 1.2.2+6
+
+* Added support for individual background colors and text colors.
+
