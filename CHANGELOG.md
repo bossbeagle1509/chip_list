@@ -30,3 +30,7 @@
 
 * Added support for individual background colors and text colors.
 
+## 1.2.2+7
+
+* Update README
+
