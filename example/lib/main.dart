@@ -48,14 +48,17 @@ class _HomePageState extends State<HomePage> {
           const SizedBox(
             height: 10,
           ),
-          ChipList(
-            listOfChipNames: _dogeNames,
-            activeBgColorList: [Theme.of(context).primaryColor],
-            inactiveBgColorList: [Colors.white],
-            activeTextColorList: [Colors.white],
-            inactiveTextColorList: [Theme.of(context).primaryColor],
-            listOfChipIndicesCurrentlySeclected: [0],
-            borderColorList: [Theme.of(context).primaryColor],
+          Center(
+            child: ChipList(
+              listOfChipNames: _dogeNames,
+              activeBgColorList: [Theme.of(context).primaryColor],
+              inactiveBgColorList: [Colors.white],
+              activeTextColorList: [Colors.white],
+              inactiveTextColorList: [Theme.of(context).primaryColor],
+              listOfChipIndicesCurrentlySeclected: [0],
+              borderColorList: [Theme.of(context).primaryColor],
+              mainAxisAlignment: MainAxisAlignment.center,
+            ),
           ),
 
           // Using [supportsMultiSelect]

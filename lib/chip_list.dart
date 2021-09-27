@@ -401,6 +401,7 @@ class _ChipListState extends State<ChipList> {
             verticalDirection: widget.verticalDirection,
           )
         : SingleChildScrollView(
+            scrollDirection: widget.axis,
             physics: widget.scrollPhysics ?? const ScrollPhysics(),
             child: Row(
               mainAxisAlignment: widget.mainAxisAlignment,
