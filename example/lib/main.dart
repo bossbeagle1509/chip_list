@@ -51,14 +51,59 @@ class _HomePageState extends State<HomePage> {
           Center(
             child: ChipList(
               listOfChipNames: _dogeNames,
-              activeBgColorList: [Theme.of(context).primaryColor],
+              activeBgColorList: [Colors.white],
+              // activeBgColorList: [Theme.of(context).primaryColor],
               inactiveBgColorList: [Colors.white],
-              activeTextColorList: [Colors.white],
+              activeTextColorList: [Theme.of(context).primaryColor],
               inactiveTextColorList: [Theme.of(context).primaryColor],
               listOfChipIndicesCurrentlySeclected: [0],
-              borderColorList: [Theme.of(context).primaryColor],
-              mainAxisAlignment: MainAxisAlignment.center,
+              activeBorderColorList: [Theme.of(context).primaryColor],
             ),
+          ),
+
+          const SizedBox(
+            height: 20,
+          ),
+          const Text('Basic usage - using border colors'),
+          const SizedBox(
+            height: 10,
+          ),
+
+          // Without a background color, instead leveraging
+          // the active and inactive border colors
+          Center(
+            child: ChipList(
+              listOfChipNames: _dogeNames,
+              activeBgColorList: [Colors.white],
+              // activeBgColorList: [Theme.of(context).primaryColor],
+              inactiveBgColorList: [Colors.white],
+              activeTextColorList: [Theme.of(context).primaryColor],
+              inactiveTextColorList: [Theme.of(context).primaryColor],
+              listOfChipIndicesCurrentlySeclected: [0],
+              activeBorderColorList: [Theme.of(context).primaryColor],
+            ),
+          ),
+
+          // Using [supportsMultiSelect]
+          const SizedBox(
+            height: 20,
+          ),
+          const Text(
+            'Using supportsMultiSelect - using border colors and text color',
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          ChipList(
+            listOfChipNames: _dogeNames,
+            supportsMultiSelect: true,
+            activeBgColorList: [Colors.white],
+            inactiveBgColorList: [Colors.white],
+            activeTextColorList: [Colors.pink, Colors.yellow, Colors.green],
+            inactiveTextColorList: [Theme.of(context).primaryColor],
+            listOfChipIndicesCurrentlySeclected: [0],
+            inactiveBorderColorList: [Colors.white],
+            activeBorderColorList: [Colors.pink, Colors.yellow, Colors.green],
           ),
 
           // Using [supportsMultiSelect]
@@ -77,7 +122,8 @@ class _HomePageState extends State<HomePage> {
             activeTextColorList: [Colors.white],
             inactiveTextColorList: [Theme.of(context).primaryColor],
             listOfChipIndicesCurrentlySeclected: [0],
-            borderColorList: [Colors.pink, Colors.yellow, Colors.green],
+            inactiveBorderColorList: [Colors.pink, Colors.yellow, Colors.green],
+            activeBorderColorList: [Colors.pink, Colors.yellow, Colors.green],
           ),
 
           // Using [extraOnToggle]
