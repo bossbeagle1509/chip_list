@@ -51,10 +51,9 @@ class _HomePageState extends State<HomePage> {
           Center(
             child: ChipList(
               listOfChipNames: _dogeNames,
-              activeBgColorList: [Colors.white],
-              // activeBgColorList: [Theme.of(context).primaryColor],
+              activeBgColorList: [Theme.of(context).primaryColor],
               inactiveBgColorList: [Colors.white],
-              activeTextColorList: [Theme.of(context).primaryColor],
+              activeTextColorList: [Colors.white],
               inactiveTextColorList: [Theme.of(context).primaryColor],
               listOfChipIndicesCurrentlySeclected: [0],
               activeBorderColorList: [Theme.of(context).primaryColor],
