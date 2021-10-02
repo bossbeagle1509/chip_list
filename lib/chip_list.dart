@@ -21,7 +21,8 @@ class ChipList extends StatefulWidget {
     this.activeBgColorList = const [Colors.blue],
     this.inactiveBgColorList = const [Colors.white],
     this.style,
-    this.borderColorList = const [Colors.white],
+    this.inactiveBorderColorList = const [Colors.white],
+    this.activeBorderColorList = const [Colors.white],
     this.borderRadiiList = const [15],
     this.supportsMultiSelect = false,
     this.extraOnToggle,
@@ -192,15 +193,27 @@ class ChipList extends StatefulWidget {
   /// Deafults to 15.0.
   final List<double> borderRadiiList;
 
-  // If you want to customize the
-  /// border color of each [ChoiceChip], then set
-  /// the color of each [ChoiceChip] here in order.
+  /// If you want to customize the
+  /// border color of each inactive [ChoiceChip], then set
+  /// the color of each here, in order.
   ///
   /// If you want to use a single color
-  /// for all chips, then set only one color here.
+  /// for all chips, whilst they're inactive,
+  /// then set only one color here.
   ///
-  /// Deafults to [Colors.white].
-  final List<Color> borderColorList;
+  /// Defaults to [Colors.white].
+  final List<Color> inactiveBorderColorList;
+
+  /// If you want to customize the
+  /// border color of each active [ChoiceChip], then set
+  /// the color of each here, in order.
+  ///
+  /// If you want to use a single color
+  /// for all chips, whilst they're active,
+  /// then set only one color here.
+  ///
+  /// Defaults to [Colors.white].
+  final List<Color> activeBorderColorList;
 
   @override
   _ChipListState createState() => _ChipListState();
@@ -312,28 +325,77 @@ class _ChipListState extends State<ChipList> {
     }
   }
 
+  Color _borderColorizer(int _index) {
+
+// if [supportsMultiSelect] is true
+    if (widget.supportsMultiSelect) {
+      if (widget.listOfChipIndicesCurrentlySeclected.contains(_index)) {
+        if (widget.activeBorderColorList.length == 1) {
+          return widget.activeBorderColorList.first;
+        } else {
+          return widget.activeBorderColorList[_index];
+        }
+      } else {
+        if (widget.inactiveBorderColorList.length == 1) {
+          return widget.inactiveBorderColorList.first;
+        } else {
+          return widget.inactiveBorderColorList[_index];
+        }
+      }
+    }
+
+    // otherwise logic for ensuring only one
+    // chip is selected.
+    else {
+      if (_index == widget.listOfChipIndicesCurrentlySeclected.first) {
+        if (widget.activeBorderColorList.length == 1) {
+          return widget.activeBorderColorList.first;
+        } else {
+          return widget.activeBorderColorList[_index];
+        }
+      } else {
+        if (widget.inactiveBorderColorList.length == 1) {
+          return widget.inactiveBorderColorList.first;
+        } else {
+          return widget.inactiveBorderColorList[_index];
+        }
+      }
+    }
+  }
+
   @override
   void initState() {
     super.initState();
 
-    if (widget.borderColorList.length != 1 &&
-        widget.borderColorList.length != widget.listOfChipNames.length) {
-      throw 'Length of borderColorList must match the length of listOfChipNames, if overriden.';
+    if (widget.inactiveBorderColorList.length != 1 &&
+        widget.inactiveBorderColorList.length !=
+            widget.listOfChipNames.length) {
+      throw Exception(
+          'Length of inactiveBorderColorList must match the length of listOfChipNames, if overriden.');
+    }
+
+    if (widget.activeBorderColorList.length != 1 &&
+        widget.activeBorderColorList.length != widget.listOfChipNames.length) {
+      throw Exception(
+          'Length of activeBorderColorList must match the length of listOfChipNames, if overriden.');
     }
 
     if (widget.borderRadiiList.length != 1 &&
         widget.borderRadiiList.length != widget.listOfChipNames.length) {
-      throw 'Length of borderRadiiList must match the length of listOfChipNames, if overriden.';
+      throw Exception(
+          'Length of borderRadiiList must match the length of listOfChipNames, if overriden.');
     }
 
     if (widget.activeBgColorList.length != 1 &&
         widget.activeBgColorList.length != widget.listOfChipNames.length) {
-      throw 'Length of activeBgColorList must match the length of listOfChipNames, if overriden.';
+      throw Exception(
+          'Length of activeBgColorList must match the length of listOfChipNames, if overriden.');
     }
 
     if (widget.inactiveBgColorList.length != 1 &&
         widget.inactiveBgColorList.length != widget.listOfChipNames.length) {
-      throw 'Length of inactiveBgColorList must match the length of listOfChipNames, if overriden.';
+      throw Exception(
+          'Length of inactiveBgColorList must match the length of listOfChipNames, if overriden.');
     }
   }
 
@@ -363,9 +425,7 @@ class _ChipListState extends State<ChipList> {
                           : widget.borderRadiiList[index],
                     ),
                     side: BorderSide(
-                      color: widget.borderColorList.length == 1
-                          ? widget.borderColorList.first
-                          : widget.borderColorList[index],
+                      color: _borderColorizer(index),
                     ),
                   ),
                   backgroundColor: widget.inactiveBgColorList.length == 1
@@ -426,9 +486,7 @@ class _ChipListState extends State<ChipList> {
                               ? widget.borderRadiiList.first
                               : widget.borderRadiiList[index]),
                       side: BorderSide(
-                        color: widget.borderColorList.length == 1
-                            ? widget.borderColorList.first
-                            : widget.borderColorList[index],
+                        color: _borderColorizer(index),
                       ),
                     ),
                     backgroundColor: widget.inactiveBgColorList.length == 1
