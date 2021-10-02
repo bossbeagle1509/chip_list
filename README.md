@@ -1,15 +1,18 @@
-## Features
 
-Creates a list of `ChoiceChips`. Also allows for selecting multiple chips at once and allows use in sync with other widgets.
+# Features
 
-See `/example/main.dart` for an example on how to use the state of the list for updating the state of other widgets, and using the `shouldWrap` property.
+Creates a list of `ChoiceChips`. Also allows for selecting multiple chips at once and allows use in sync with other widgets. This package is intended to solve all your woes with regards to Chips. 
 
-## Getting started
+Well, maybe not all, but if you would like to request a feature,  [yes please](https://github.com/bossbeagle1509/chip_list/issues) !
+
+See `/example/main.dart` for an example on how to use the state of the list for updating the state of other widgets, and other cool properties.
+
+# Getting started
 
 Depend on it ! Add this to your `pubspec.yaml`
 
 ```dart
-chip_list: ^1.2.3+7
+chip_list: ^2.2.3+7
 ```
 
 Import it !
@@ -20,12 +23,12 @@ import 'package:chip_list/chip_list.dart';
 
 ---
 
-## Demo
+# Demo
 
 ![](https://raw.githubusercontent.com/bossbeagle1509/chip_list/main/example_gif.gif)
 
 
-## In brief, the most useful features:
+# In brief, the most useful features:
 
 ```dart
 ChipList(
@@ -34,24 +37,29 @@ ChipList(
             inactiveBgColorList: [],
             activeTextColorList: [],
             inactiveTextColorList: [],
+            activeBorderColorList: [],
+            inactiveBorderColorList: [],
             listOfChipIndicesCurrentlySeclected: [],
           ),
 ```
 
-## Features
-### Wrapping the contents of `ChipList`
+# Features
+
+## Wrapping the contents of `ChipList`
 If you want to wrap the `ChipList`, then set `shouldWrap` to `true`. 
 You can then use all the properties of a typical `Wrap` widget to further customize appearance.
 
-### Setting individual colors for active/inactive background and/or text color
+
+
+## Setting individual colors for active/inactive background and/or text color
 If you want to have full control of the parameters specifiied above over each and every single chip, you can do so by setting the color within the `activeBgColorList`, `inactiveBgColorList`,
 `activeTextColorList` and `inactiveTextColorList` respectively, wherever appropriate. 
 
 Use a single color if you want it to be used for all chips. Otherwise, the length of the list must be equal to the length of `listOfChipNames`.
 
-Note that if you don't, then the package has defaults as specified in the documentation. (You can hover over the property 🙂 in your IDE to see more).
+Note that if you don't, then the package has defaults as specified in the documentation. (You can hover over the property  in your IDE to see more 🙂).
 
-## Example Usage
+# Example Usage
 
 `/example/main.dart`:
 
@@ -179,7 +187,7 @@ class _HomePageState extends State<HomePage> {
 
 ```
 
-## Additional information
+# Additional information
 
 Found an issue ? [Please let me know !](https://github.com/bossbeagle1509/chip_list/issues)
 Feel like creating a PR ? Yes please ! All contributions are welcome :)

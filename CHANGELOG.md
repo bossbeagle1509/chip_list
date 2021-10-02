@@ -38,3 +38,7 @@
 
 * Fix bug in scollability.
 
+## 2.2.3+7
+
+* Added support for active and inactive border colors.
+
