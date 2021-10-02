@@ -3,9 +3,9 @@
 
 Creates a list of `ChoiceChips`. Also allows for selecting multiple chips at once and allows use in sync with other widgets. This package is intended to solve all your woes with regards to Chips. 
 
-Well, maybe not all, but if you would like to request a feature,  [yes please](https://github.com/bossbeagle1509/chip_list/issues) !
+Well, maybe not all, but if you would like to request a feature,  [fire away](https://github.com/bossbeagle1509/chip_list/issues) !
 
-See `/example/main.dart` for an example on how to use the state of the list for updating the state of other widgets, and other cool properties.
+See `/example/main.dart` for an example on how to use the state of the list for updating the state of other widgets, and other fancy properties.
 
 # Getting started
 
@@ -20,6 +20,7 @@ Import it !
 ```dart
 import 'package:chip_list/chip_list.dart';
 ```
+Profit. 😉
 
 ---
 
@@ -51,8 +52,8 @@ You can then use all the properties of a typical `Wrap` widget to further custom
 
 
 
-## Setting individual colors for active/inactive background and/or text color
-If you want to have full control of the parameters specifiied above over each and every single chip, you can do so by setting the color within the `activeBgColorList`, `inactiveBgColorList`,
+## Setting individual colors for active/inactive background and border color and text color
+If you want to have full control of the parameters specified above over each and every single chip, you can do so by setting the color within the `activeBgColorList`, `inactiveBgColorList`,
 `activeTextColorList` and `inactiveTextColorList` respectively, wherever appropriate. 
 
 Use a single color if you want it to be used for all chips. Otherwise, the length of the list must be equal to the length of `listOfChipNames`.
