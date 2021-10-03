@@ -42,3 +42,7 @@
 
 * Added support for active and inactive border colors.
 
+## 2.3.3+8
+
+* Added warning to README and added support for vertical chipLists.
+
