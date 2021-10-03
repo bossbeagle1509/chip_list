@@ -49,8 +49,6 @@ ChipList(
 If you want to wrap the `ChipList`, then set `shouldWrap` to `true`. 
 You can then use all the properties of a typical `Wrap` widget to further customize appearance.
 
-
-
 ## Setting individual colors for active/inactive background and border color and text color
 If you want to have full control of the parameters specified above over each and every single chip, you can do so by setting the color within the `activeBgColorList`, `inactiveBgColorList`,
 `activeTextColorList` and `inactiveTextColorList` respectively, wherever appropriate. 
@@ -58,6 +56,9 @@ If you want to have full control of the parameters specified above over each and
 Use a single color if you want it to be used for all chips. Otherwise, the length of the list must be equal to the length of `listOfChipNames`.
 
 Note that if you don't, then the package has defaults as specified in the documentation. (You can hover over the property  in your IDE to see more 🙂).
+
+## Spacing in between each `Chip`
+Whether you choose to let the axis to `Axis.vertical` or `Axis.horizontal`, you can set the spacing by tweaking `widgetSpacing`.
 
 # ⚠ Warning !
 

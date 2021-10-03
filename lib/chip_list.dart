@@ -233,7 +233,7 @@ class ChipList extends StatefulWidget {
   /// and vice versa.
   ///
   /// Defaults to 4.0.
-  final double widgetPadding = 4.0;
+  final double widgetSpacing = 4.0;
 
   @override
   _ChipListState createState() => _ChipListState();
@@ -489,7 +489,7 @@ class _ChipListState extends State<ChipList> {
                       widget.listOfChipNames.length,
                       (index) => Padding(
                         padding: EdgeInsets.symmetric(
-                          horizontal: widget.widgetPadding,
+                          horizontal: widget.widgetSpacing,
                         ),
                         child: ChoiceChip(
                           label: Text(
@@ -542,7 +542,7 @@ class _ChipListState extends State<ChipList> {
                       widget.listOfChipNames.length,
                       (index) => Padding(
                         padding: EdgeInsets.symmetric(
-                          vertical: widget.widgetPadding,
+                          vertical: widget.widgetSpacing,
                         ),
                         child: ChoiceChip(
                           label: Text(
