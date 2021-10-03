@@ -28,7 +28,6 @@ Profit. 😉
 
 ![](https://raw.githubusercontent.com/bossbeagle1509/chip_list/main/example_gif.gif)
 
-
 # In brief, the most useful features:
 
 ```dart
@@ -59,6 +58,14 @@ If you want to have full control of the parameters specified above over each and
 Use a single color if you want it to be used for all chips. Otherwise, the length of the list must be equal to the length of `listOfChipNames`.
 
 Note that if you don't, then the package has defaults as specified in the documentation. (You can hover over the property  in your IDE to see more 🙂).
+
+# ⚠ Warning !
+
+The `flutter_lints` package might suggest that you make `listOfChipIndicesCurrentlySeclected` a constant.
+
+PLEASE DO NOT DO SO. The widget will not respond to user interaction, seemingly without any reason.
+
+That list will be updated as the user interacts with the widget. It is intended to be used in case you would like to incorporate the contents for any logic. 
 
 # Example Usage
 
@@ -188,7 +195,7 @@ class _HomePageState extends State<HomePage> {
 
 ```
 
-# Additional information
+# Additional stuff
 
 Found an issue ? [Please let me know !](https://github.com/bossbeagle1509/chip_list/issues)
 Feel like creating a PR ? Yes please ! All contributions are welcome :)
