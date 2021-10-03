@@ -7,6 +7,8 @@ Well, maybe not all, but if you would like to request a feature,  [fire away](ht
 
 See `/example/main.dart` for an example on how to use the state of the list for updating the state of other widgets, and other fancy properties.
 
+&nbsp;
+
 # Getting started
 
 Depend on it ! Add this to your `pubspec.yaml`
@@ -23,6 +25,8 @@ import 'package:chip_list/chip_list.dart';
 Profit. 😉
 
 ---
+
+&nbsp;
 
 # Demo
 
@@ -42,6 +46,7 @@ ChipList(
             listOfChipIndicesCurrentlySeclected: [],
           ),
 ```
+&nbsp;
 
 # Features
 
@@ -60,6 +65,8 @@ Note that if you don't, then the package has defaults as specified in the docume
 ## Spacing in between each `Chip`
 Whether you choose to let the axis to `Axis.vertical` or `Axis.horizontal`, you can set the spacing by tweaking `widgetSpacing`.
 
+&nbsp;
+
 # ⚠ Warning !
 
 The `flutter_lints` package might suggest that you make `listOfChipIndicesCurrentlySeclected` a constant.
@@ -67,6 +74,8 @@ The `flutter_lints` package might suggest that you make `listOfChipIndicesCurren
 PLEASE DO NOT DO SO. The widget will not respond to user interaction, seemingly without any reason.
 
 That list will be updated as the user interacts with the widget. It is intended to be used in case you would like to incorporate the contents for any logic. 
+
+&nbsp;
 
 # Example Usage
 
@@ -195,6 +204,8 @@ class _HomePageState extends State<HomePage> {
 }
 
 ```
+
+&nbsp;
 
 # Additional stuff
 
