@@ -11,6 +11,7 @@ typedef OnToggle = void Function(int index);
 /// Set the names of chips and boom !
 /// Use [supportsMultiSelect] if
 /// multiple chips can be selected at once.
+// ignore: must_be_immutable
 class ChipList extends StatefulWidget {
   ChipList({
     Key? key,
@@ -242,30 +243,30 @@ class ChipList extends StatefulWidget {
   EdgeInsets padding;
 
   @override
-  _ChipListState createState() => _ChipListState();
+  State<ChipList> createState() => _ChipListState();
 }
 
 class _ChipListState extends State<ChipList> {
-  bool _checkChipSelectionStatus(int _index) {
+  bool _checkChipSelectionStatus(int index) {
     if (widget.supportsMultiSelect &&
-        widget.listOfChipIndicesCurrentlySeclected.contains(_index)) {
+        widget.listOfChipIndicesCurrentlySeclected.contains(index)) {
       return true;
     } else if (!widget.supportsMultiSelect &&
-        widget.listOfChipIndicesCurrentlySeclected.first == _index) {
+        widget.listOfChipIndicesCurrentlySeclected.first == index) {
       return true;
     }
 
     return false;
   }
 
-  void _handleOnSelected(int _index) {
+  void _handleOnSelected(int index) {
     // if [supportsMultiSelect] is true
     if (widget.supportsMultiSelect) {
-      if (widget.listOfChipIndicesCurrentlySeclected.contains(_index)) {
-        widget.listOfChipIndicesCurrentlySeclected.remove(_index);
+      if (widget.listOfChipIndicesCurrentlySeclected.contains(index)) {
+        widget.listOfChipIndicesCurrentlySeclected.remove(index);
         return;
       } else {
-        widget.listOfChipIndicesCurrentlySeclected.add(_index);
+        widget.listOfChipIndicesCurrentlySeclected.add(index);
         return;
       }
     }
@@ -273,24 +274,24 @@ class _ChipListState extends State<ChipList> {
     // otherwise logic for ensuring only one
     // chip is selected.
     else {
-      widget.listOfChipIndicesCurrentlySeclected.first = _index;
+      widget.listOfChipIndicesCurrentlySeclected.first = index;
     }
   }
 
-  Color _textColorizer(int _index) {
+  Color _textColorizer(int index) {
     // if [supportsMultiSelect] is true
     if (widget.supportsMultiSelect) {
-      if (widget.listOfChipIndicesCurrentlySeclected.contains(_index)) {
+      if (widget.listOfChipIndicesCurrentlySeclected.contains(index)) {
         if (widget.activeTextColorList.length == 1) {
           return widget.activeTextColorList.first;
         } else {
-          return widget.activeTextColorList[_index];
+          return widget.activeTextColorList[index];
         }
       } else {
         if (widget.inactiveTextColorList.length == 1) {
           return widget.inactiveTextColorList.first;
         } else {
-          return widget.inactiveTextColorList[_index];
+          return widget.inactiveTextColorList[index];
         }
       }
     }
@@ -298,36 +299,36 @@ class _ChipListState extends State<ChipList> {
     // otherwise logic for ensuring only one
     // chip is selected.
     else {
-      if (_index == widget.listOfChipIndicesCurrentlySeclected.first) {
+      if (index == widget.listOfChipIndicesCurrentlySeclected.first) {
         if (widget.activeTextColorList.length == 1) {
           return widget.activeTextColorList.first;
         } else {
-          return widget.activeTextColorList[_index];
+          return widget.activeTextColorList[index];
         }
       } else {
         if (widget.inactiveTextColorList.length == 1) {
           return widget.inactiveTextColorList.first;
         } else {
-          return widget.inactiveTextColorList[_index];
+          return widget.inactiveTextColorList[index];
         }
       }
     }
   }
 
-  Color _tileColorizer(int _index) {
+  Color _tileColorizer(int index) {
     // if [supportsMultiSelect] is true
     if (widget.supportsMultiSelect) {
-      if (widget.listOfChipIndicesCurrentlySeclected.contains(_index)) {
+      if (widget.listOfChipIndicesCurrentlySeclected.contains(index)) {
         if (widget.activeBgColorList.length == 1) {
           return widget.activeBgColorList.first;
         } else {
-          return widget.activeBgColorList[_index];
+          return widget.activeBgColorList[index];
         }
       } else {
         if (widget.inactiveBgColorList.length == 1) {
           return widget.inactiveBgColorList.first;
         } else {
-          return widget.inactiveBgColorList[_index];
+          return widget.inactiveBgColorList[index];
         }
       }
     }
@@ -335,36 +336,36 @@ class _ChipListState extends State<ChipList> {
     // otherwise logic for ensuring only one
     // chip is selected.
     else {
-      if (_index == widget.listOfChipIndicesCurrentlySeclected.first) {
+      if (index == widget.listOfChipIndicesCurrentlySeclected.first) {
         if (widget.activeBgColorList.length == 1) {
           return widget.activeBgColorList.first;
         } else {
-          return widget.activeBgColorList[_index];
+          return widget.activeBgColorList[index];
         }
       } else {
         if (widget.inactiveBgColorList.length == 1) {
           return widget.inactiveBgColorList.first;
         } else {
-          return widget.inactiveBgColorList[_index];
+          return widget.inactiveBgColorList[index];
         }
       }
     }
   }
 
-  Color _borderColorizer(int _index) {
+  Color _borderColorizer(int index) {
     // if [supportsMultiSelect] is true
     if (widget.supportsMultiSelect) {
-      if (widget.listOfChipIndicesCurrentlySeclected.contains(_index)) {
+      if (widget.listOfChipIndicesCurrentlySeclected.contains(index)) {
         if (widget.activeBorderColorList.length == 1) {
           return widget.activeBorderColorList.first;
         } else {
-          return widget.activeBorderColorList[_index];
+          return widget.activeBorderColorList[index];
         }
       } else {
         if (widget.inactiveBorderColorList.length == 1) {
           return widget.inactiveBorderColorList.first;
         } else {
-          return widget.inactiveBorderColorList[_index];
+          return widget.inactiveBorderColorList[index];
         }
       }
     }
@@ -372,17 +373,17 @@ class _ChipListState extends State<ChipList> {
     // otherwise logic for ensuring only one
     // chip is selected.
     else {
-      if (_index == widget.listOfChipIndicesCurrentlySeclected.first) {
+      if (index == widget.listOfChipIndicesCurrentlySeclected.first) {
         if (widget.activeBorderColorList.length == 1) {
           return widget.activeBorderColorList.first;
         } else {
-          return widget.activeBorderColorList[_index];
+          return widget.activeBorderColorList[index];
         }
       } else {
         if (widget.inactiveBorderColorList.length == 1) {
           return widget.inactiveBorderColorList.first;
         } else {
-          return widget.inactiveBorderColorList[_index];
+          return widget.inactiveBorderColorList[index];
         }
       }
     }
