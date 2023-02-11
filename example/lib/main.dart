@@ -52,10 +52,10 @@ class _HomePageState extends State<HomePage> {
             child: ChipList(
               listOfChipNames: _dogeNames,
               activeBgColorList: [Theme.of(context).primaryColor],
-              inactiveBgColorList: [Colors.white],
-              activeTextColorList: [Colors.white],
+              inactiveBgColorList: const [Colors.white],
+              activeTextColorList: const [Colors.white],
               inactiveTextColorList: [Theme.of(context).primaryColor],
-              listOfChipIndicesCurrentlySeclected: [0],
+              listOfChipIndicesCurrentlySeclected: const [0],
               activeBorderColorList: [Theme.of(context).primaryColor],
             ),
           ),
@@ -73,12 +73,12 @@ class _HomePageState extends State<HomePage> {
           Center(
             child: ChipList(
               listOfChipNames: _dogeNames,
-              activeBgColorList: [Colors.white],
+              activeBgColorList: const [Colors.white],
               // activeBgColorList: [Theme.of(context).primaryColor],
-              inactiveBgColorList: [Colors.white],
+              inactiveBgColorList: const [Colors.white],
               activeTextColorList: [Theme.of(context).primaryColor],
               inactiveTextColorList: [Theme.of(context).primaryColor],
-              listOfChipIndicesCurrentlySeclected: [0],
+              listOfChipIndicesCurrentlySeclected: const [0],
               activeBorderColorList: [Theme.of(context).primaryColor],
             ),
           ),
@@ -96,13 +96,21 @@ class _HomePageState extends State<HomePage> {
           ChipList(
             listOfChipNames: _dogeNames,
             supportsMultiSelect: true,
-            activeBgColorList: [Colors.white],
-            inactiveBgColorList: [Colors.white],
-            activeTextColorList: [Colors.pink, Colors.yellow, Colors.green],
+            activeBgColorList: const [Colors.white],
+            inactiveBgColorList: const [Colors.white],
+            activeTextColorList: const [
+              Colors.pink,
+              Colors.yellow,
+              Colors.green
+            ],
             inactiveTextColorList: [Theme.of(context).primaryColor],
             listOfChipIndicesCurrentlySeclected: [0],
-            inactiveBorderColorList: [Colors.white],
-            activeBorderColorList: [Colors.pink, Colors.yellow, Colors.green],
+            inactiveBorderColorList: const [Colors.white],
+            activeBorderColorList: const [
+              Colors.pink,
+              Colors.yellow,
+              Colors.green
+            ],
           ),
 
           // Using [supportsMultiSelect]
@@ -116,13 +124,21 @@ class _HomePageState extends State<HomePage> {
           ChipList(
             listOfChipNames: _dogeNames,
             supportsMultiSelect: true,
-            activeBgColorList: [Colors.pink, Colors.yellow, Colors.green],
-            inactiveBgColorList: [Colors.white],
-            activeTextColorList: [Colors.white],
+            activeBgColorList: const [Colors.pink, Colors.yellow, Colors.green],
+            inactiveBgColorList: const [Colors.white],
+            activeTextColorList: const [Colors.white],
             inactiveTextColorList: [Theme.of(context).primaryColor],
             listOfChipIndicesCurrentlySeclected: [0],
-            inactiveBorderColorList: [Colors.pink, Colors.yellow, Colors.green],
-            activeBorderColorList: [Colors.pink, Colors.yellow, Colors.green],
+            inactiveBorderColorList: const [
+              Colors.pink,
+              Colors.yellow,
+              Colors.green
+            ],
+            activeBorderColorList: const [
+              Colors.pink,
+              Colors.yellow,
+              Colors.green
+            ],
           ),
 
           // Using [extraOnToggle]
@@ -136,16 +152,16 @@ class _HomePageState extends State<HomePage> {
           ChipList(
             listOfChipNames: _dogeNames,
             activeBgColorList: [Theme.of(context).primaryColor],
-            inactiveBgColorList: [Colors.white],
-            activeTextColorList: [Colors.white],
+            inactiveBgColorList: const [Colors.white],
+            activeTextColorList: const [Colors.white],
             inactiveTextColorList: [Theme.of(context).primaryColor],
             listOfChipIndicesCurrentlySeclected: [_currentIndex],
+            inactiveBorderColorList: const [Colors.teal],
             extraOnToggle: (val) {
               _currentIndex = val;
               setState(() {});
             },
           ),
-
           // Using [shouldWrap]
           const SizedBox(
             height: 20,
@@ -173,9 +189,9 @@ class _HomePageState extends State<HomePage> {
               inactiveBgColorList: const [
                 Colors.white,
               ],
-              activeTextColorList: [Colors.white],
+              activeTextColorList: const [Colors.white],
               inactiveTextColorList: [Theme.of(context).primaryColor],
-              listOfChipIndicesCurrentlySeclected: [0],
+              listOfChipIndicesCurrentlySeclected: const [0],
               shouldWrap: true,
               runSpacing: 10,
               spacing: 10,

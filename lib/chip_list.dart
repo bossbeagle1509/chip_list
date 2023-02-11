@@ -12,7 +12,7 @@ typedef OnToggle = void Function(int index);
 /// Use [supportsMultiSelect] if
 /// multiple chips can be selected at once.
 class ChipList extends StatefulWidget {
-  const ChipList({
+  ChipList({
     Key? key,
     required this.listOfChipNames,
     required this.listOfChipIndicesCurrentlySeclected,
@@ -37,21 +37,23 @@ class ChipList extends StatefulWidget {
     this.spacing = 0.0,
     this.textDirection,
     this.verticalDirection = VerticalDirection.down,
+    this.padding = EdgeInsets.zero,
+    this.widgetSpacing = 4,
   }) : super(key: key);
 
   /// In case you chain some *more* logic to this widget's
   /// onTap event (maybe trigger updation of other UI components).
   /// If this is used, ensure you call
-  /// setState at the end of the function.
-  final OnToggle? extraOnToggle;
+  /// [setState] at the end of the function.
+  OnToggle? extraOnToggle;
 
   /// List of ChoiceChip names in order of building them.
-  final List<String> listOfChipNames;
+  List<String> listOfChipNames;
 
   /// If multiple [ChoiceChips] can be selected at once.
   ///
   /// Defaults to [false].
-  final bool supportsMultiSelect;
+  bool supportsMultiSelect;
 
   /// The background color of an inactive [ChoiceChip].
   ///
@@ -63,7 +65,7 @@ class ChipList extends StatefulWidget {
   /// for all chips, then set only one color here.
   ///
   /// Defults to [Colors.white].
-  final List<Color> inactiveBgColorList;
+  List<Color> inactiveBgColorList;
 
   /// The background color of an active [ChoiceChip].
   ///
@@ -75,7 +77,7 @@ class ChipList extends StatefulWidget {
   /// for all chips, then set only one color here.
   ///
   /// Defults to [Colors.blue].
-  final List<Color> activeBgColorList;
+  List<Color> activeBgColorList;
 
   /// The text color of an active [ChoiceChip].
   ///
@@ -87,7 +89,7 @@ class ChipList extends StatefulWidget {
   /// for all chips, then set only one color here.
   ///
   /// Defults to [Colors.white].
-  final List<Color> activeTextColorList;
+  List<Color> activeTextColorList;
 
   /// The text color of an inactive [ChoiceChip].
   ///
@@ -99,12 +101,12 @@ class ChipList extends StatefulWidget {
   /// for all chips, then set only one color here.
   ///
   /// Defults to [Colors.blue].
-  final List<Color> inactiveTextColorList;
+  List<Color> inactiveTextColorList;
 
   /// Initial `index` that must be selected.
   /// Useful to sync this widget with
   /// others if need be.
-  final List<int> listOfChipIndicesCurrentlySeclected;
+  List<int> listOfChipIndicesCurrentlySeclected;
 
   /// For any text styling needs.
   ///
@@ -112,7 +114,7 @@ class ChipList extends StatefulWidget {
   /// as it will be overwritten by
   /// the value of [activeTextColorList]
   /// and [inactiveTextColorList].
-  final TextStyle? style;
+  TextStyle? style;
 
   /// Determines if the chip_list should be wrapped.
   ///
@@ -122,13 +124,13 @@ class ChipList extends StatefulWidget {
   /// property.
   ///
   /// Defaults to false.
-  final bool shouldWrap;
+  bool shouldWrap;
 
   /// If you wish to change the [ScrollPhysics]
   /// of the widget.
   ///
   /// Defaults to matching platform conventions.
-  final ScrollPhysics? scrollPhysics;
+  ScrollPhysics? scrollPhysics;
 
   /// MainAxisAlignment for the parent [Row] or [Column] of
   /// the [ChipList], which is used in case of
@@ -136,22 +138,22 @@ class ChipList extends StatefulWidget {
   /// to [axis].
   ///
   /// Defaults to [MainAxisAlignment.center]
-  final MainAxisAlignment mainAxisAlignment;
+  MainAxisAlignment mainAxisAlignment;
 
   /// [WrapAlignment] used, if [shouldWrap] is [true].
   ///
   /// Defaults to [WrapAlignment.start].
-  final WrapAlignment wrapAlignment;
+  WrapAlignment wrapAlignment;
 
   /// [WrapCrossAlignment] used, if [shouldWrap] is [true]
   ///
   /// Defaults to [WrapCrossAlignment.start].
-  final WrapCrossAlignment wrapCrossAlignment;
+  WrapCrossAlignment wrapCrossAlignment;
 
   /// [Axis] used, if [shouldWrap] is [true].
   ///
   /// Defaults to [Axis.horizontal].
-  final Axis axis;
+  Axis axis;
 
   /// [WrapAlignment] used, if [shouldWrap] is [true].
   ///
@@ -159,7 +161,7 @@ class ChipList extends StatefulWidget {
   /// be placed in the cross axis.
   ///
   /// Defaults to [WrapAlignment.start].
-  final WrapAlignment runAlignment;
+  WrapAlignment runAlignment;
 
   /// [runSpacing] used, if [shouldWrap] is [true],
   ///
@@ -167,7 +169,7 @@ class ChipList extends StatefulWidget {
   /// runs themselves in the cross axis.
   ///
   /// Defaults to 0.0.
-  final double runSpacing;
+  double runSpacing;
 
   /// [spacing] used, if [shouldWrap] is [true],
   ///
@@ -175,14 +177,14 @@ class ChipList extends StatefulWidget {
   /// children in a run in the main axis.
   ///
   /// Defaults to 0.0.
-  final double spacing;
+  double spacing;
 
   /// [textDirection] used, if [shouldWrap] is [true],
   ///
   /// Determines the order to lay children out
   /// horizontally and how to interpret start
   /// and end in the horizontal direction.
-  final TextDirection? textDirection;
+  TextDirection? textDirection;
 
   /// [verticalDirection] used, if [shouldWrap] is [true],
   ///
@@ -191,7 +193,7 @@ class ChipList extends StatefulWidget {
   /// end in the vertical direction.
   ///
   /// Defaults to [VerticalDirection.down].
-  final VerticalDirection verticalDirection;
+  VerticalDirection verticalDirection;
 
   /// If you want to customize the
   /// border radii of each [ChoiceChip], then set
@@ -201,7 +203,7 @@ class ChipList extends StatefulWidget {
   /// for all chips, then set only one radius here.
   ///
   /// Deafults to 15.0.
-  final List<double> borderRadiiList;
+  List<double> borderRadiiList;
 
   /// If you want to customize the
   /// border color of each inactive [ChoiceChip], then set
@@ -212,7 +214,7 @@ class ChipList extends StatefulWidget {
   /// then set only one color here.
   ///
   /// Defaults to [Colors.white].
-  final List<Color> inactiveBorderColorList;
+  List<Color> inactiveBorderColorList;
 
   /// If you want to customize the
   /// border color of each active [ChoiceChip], then set
@@ -223,7 +225,7 @@ class ChipList extends StatefulWidget {
   /// then set only one color here.
   ///
   /// Defaults to [Colors.white].
-  final List<Color> activeBorderColorList;
+  List<Color> activeBorderColorList;
 
   /// Use this to alter the padding of
   /// widgets in the list of the list,
@@ -233,7 +235,11 @@ class ChipList extends StatefulWidget {
   /// and vice versa.
   ///
   /// Defaults to 4.0.
-  final double widgetSpacing = 4.0;
+  double widgetSpacing;
+
+  /// Sets the inner spacing for the child of each [ChoiceChip].
+  /// Defaults to [EdgeInsets.zero].
+  EdgeInsets padding;
 
   @override
   _ChipListState createState() => _ChipListState();
@@ -346,7 +352,7 @@ class _ChipListState extends State<ChipList> {
   }
 
   Color _borderColorizer(int _index) {
-// if [supportsMultiSelect] is true
+    // if [supportsMultiSelect] is true
     if (widget.supportsMultiSelect) {
       if (widget.listOfChipIndicesCurrentlySeclected.contains(_index)) {
         if (widget.activeBorderColorList.length == 1) {
@@ -422,6 +428,14 @@ class _ChipListState extends State<ChipList> {
   Widget build(BuildContext context) {
     return widget.shouldWrap
         ? Wrap(
+            alignment: widget.wrapAlignment,
+            crossAxisAlignment: widget.wrapCrossAlignment,
+            direction: widget.axis,
+            runAlignment: widget.runAlignment,
+            runSpacing: widget.runSpacing,
+            spacing: widget.spacing,
+            textDirection: widget.textDirection,
+            verticalDirection: widget.verticalDirection,
             children: List.generate(
               widget.listOfChipNames.length,
               (index) => Padding(
@@ -470,14 +484,6 @@ class _ChipListState extends State<ChipList> {
                 ),
               ),
             ),
-            alignment: widget.wrapAlignment,
-            crossAxisAlignment: widget.wrapCrossAlignment,
-            direction: widget.axis,
-            runAlignment: widget.runAlignment,
-            runSpacing: widget.runSpacing,
-            spacing: widget.spacing,
-            textDirection: widget.textDirection,
-            verticalDirection: widget.verticalDirection,
           )
         : SingleChildScrollView(
             scrollDirection: widget.axis,
@@ -492,15 +498,18 @@ class _ChipListState extends State<ChipList> {
                           horizontal: widget.widgetSpacing,
                         ),
                         child: ChoiceChip(
-                          label: Text(
-                            widget.listOfChipNames[index],
-                            style: widget.style != null
-                                ? widget.style!.copyWith(
-                                    color: _textColorizer(index),
-                                  )
-                                : const TextStyle().copyWith(
-                                    color: _textColorizer(index),
-                                  ),
+                          label: Padding(
+                            padding: widget.padding,
+                            child: Text(
+                              widget.listOfChipNames[index],
+                              style: widget.style != null
+                                  ? widget.style!.copyWith(
+                                      color: _textColorizer(index),
+                                    )
+                                  : const TextStyle().copyWith(
+                                      color: _textColorizer(index),
+                                    ),
+                            ),
                           ),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
@@ -545,15 +554,18 @@ class _ChipListState extends State<ChipList> {
                           vertical: widget.widgetSpacing,
                         ),
                         child: ChoiceChip(
-                          label: Text(
-                            widget.listOfChipNames[index],
-                            style: widget.style != null
-                                ? widget.style!.copyWith(
-                                    color: _textColorizer(index),
-                                  )
-                                : const TextStyle().copyWith(
-                                    color: _textColorizer(index),
-                                  ),
+                          label: Padding(
+                            padding: widget.padding,
+                            child: Text(
+                              widget.listOfChipNames[index],
+                              style: widget.style != null
+                                  ? widget.style!.copyWith(
+                                      color: _textColorizer(index),
+                                    )
+                                  : const TextStyle().copyWith(
+                                      color: _textColorizer(index),
+                                    ),
+                            ),
                           ),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
