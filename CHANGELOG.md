@@ -50,3 +50,10 @@
 
 - Removed use of `final` keyword for necessary parameters.
 - Added new `padding` property that affects how much padding surrounds the content of each `ChoiceChip`
+
+
+## 2.4.4+8
+
+- Added 2 new attributes to help with customisation (showCheckmark and checkmarkColor) when useMaterial3 = true in your project
+- Updated Flutter SDK constraints in pubspec.yaml
+- Updated README.md

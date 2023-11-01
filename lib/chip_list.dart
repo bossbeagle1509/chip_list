@@ -40,6 +40,8 @@ class ChipList extends StatefulWidget {
     this.verticalDirection = VerticalDirection.down,
     this.padding = EdgeInsets.zero,
     this.widgetSpacing = 4,
+    this.checkmarkColor,
+    this.showCheckmark = true,
   }) : super(key: key);
 
   /// In case you chain some *more* logic to this widget's
@@ -242,6 +244,15 @@ class ChipList extends StatefulWidget {
   /// Defaults to [EdgeInsets.zero].
   EdgeInsets padding;
 
+  /// Sets color for checkmark if enabled
+  /// Defaults to null, which triggers Flutter to use the appropriate color
+  /// based off of the Brightness setting. If you're not sure, leave this blank
+  Color? checkmarkColor;
+
+  /// Sets if the checkMark is enabled
+  /// Defaults to [true]
+  bool showCheckmark;
+
   @override
   State<ChipList> createState() => _ChipListState();
 }
@@ -442,6 +453,8 @@ class _ChipListState extends State<ChipList> {
               (index) => Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 4.0),
                 child: ChoiceChip(
+                  showCheckmark: widget.showCheckmark,
+                  checkmarkColor: widget.checkmarkColor,
                   label: Text(
                     widget.listOfChipNames[index],
                     style: widget.style != null
@@ -555,6 +568,8 @@ class _ChipListState extends State<ChipList> {
                           vertical: widget.widgetSpacing,
                         ),
                         child: ChoiceChip(
+                          showCheckmark: widget.showCheckmark,
+                          checkmarkColor: widget.checkmarkColor,
                           label: Padding(
                             padding: widget.padding,
                             child: Text(

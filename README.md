@@ -14,7 +14,7 @@ See `/example/main.dart` for an example on how to use the state of the list for 
 Depend on it ! Add this to your `pubspec.yaml`
 
 ```dart
-chip_list: ^2.2.3+7
+chip_list: ^2.4.4+8
 ```
 
 Import it !
@@ -64,6 +64,12 @@ Note that if you don't, then the package has defaults as specified in the docume
 
 ## Spacing in between each `Chip`
 Whether you choose to let the axis to `Axis.vertical` or `Axis.horizontal`, you can set the spacing by tweaking `widgetSpacing`.
+
+&nbsp;
+
+## New attributes added to improve customisation if you set `useMaterial3 = true`
+- `showCheckmark` lets you enable or disable checkmarks in chips
+- `checkmarkColor` lets you set the color of the checkmark if it's enabled
 
 &nbsp;
 
