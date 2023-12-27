@@ -512,6 +512,8 @@ class _ChipListState extends State<ChipList> {
                           horizontal: widget.widgetSpacing,
                         ),
                         child: ChoiceChip(
+                          showCheckmark: widget.showCheckmark,
+                          checkmarkColor: widget.checkmarkColor,
                           label: Padding(
                             padding: widget.padding,
                             child: Text(
