@@ -14,7 +14,7 @@ See `/example/main.dart` for an example on how to use the state of the list for 
 Depend on it! Add this to your `pubspec.yaml`
 
 ```dart
-chip_list: ^3.4.4+8
+chip_list: ^3.0.0
 ```
 
 Import it!

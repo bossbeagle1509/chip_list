@@ -59,7 +59,7 @@
 - Updated README.md
 
 
-## 3.4.4+8
+## 3.0.0
 
 - Very sorry for the new major version, this is because I fixed the typo in [listOfChipIndicesCurrentlySeclected]->[listOfChipIndicesCurrentlySelected], hence breaking backwards compatability
 - Added 4 new attributes to help with customisation (elevation, tooltips,shadowColor,selectedShadowColor)

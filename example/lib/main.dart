@@ -15,13 +15,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Chip List Demo',
       theme: ThemeData(primarySwatch: Colors.teal, primaryColor: Colors.teal),
-      home: HomePage(),
+      home: const HomePage(),
     );
   }
 }
 
 class HomePage extends StatefulWidget {
-  HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
