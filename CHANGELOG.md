@@ -57,3 +57,12 @@
 - Added 2 new attributes to help with customisation (showCheckmark and checkmarkColor) when useMaterial3 = true in your project
 - Updated Flutter SDK constraints in pubspec.yaml
 - Updated README.md
+
+
+## 3.4.4+8
+
+- Very sorry for the new major version, this is because I fixed the typo in [listOfChipIndicesCurrentlySeclected]->[listOfChipIndicesCurrentlySelected], hence breaking backwards compatability
+- Added 4 new attributes to help with customisation (elevation, tooltips,shadowColor,selectedShadowColor)
+- added ability to have no chips selected when [supportsMultiSelect] is false
+- code clean up
+- Updated README.md

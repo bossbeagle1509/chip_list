@@ -3,7 +3,7 @@
 
 Creates a list of `ChoiceChips`. Also allows for selecting multiple chips at once and allows use in sync with other widgets. This package is intended to solve all your woes with regards to Chips. 
 
-Well, maybe not all, but if you would like to request a feature,  [fire away](https://github.com/bossbeagle1509/chip_list/issues) !
+Well, maybe not all, but if you would like to request a feature, [fire away](https://github.com/bossbeagle1509/chip_list/issues) !
 
 See `/example/main.dart` for an example on how to use the state of the list for updating the state of other widgets, and other fancy properties.
 
@@ -11,13 +11,13 @@ See `/example/main.dart` for an example on how to use the state of the list for 
 
 # Getting started
 
-Depend on it ! Add this to your `pubspec.yaml`
+Depend on it! Add this to your `pubspec.yaml`
 
 ```dart
-chip_list: ^2.4.4+8
+chip_list: ^3.4.4+8
 ```
 
-Import it !
+Import it!
 
 ```dart
 import 'package:chip_list/chip_list.dart';
@@ -43,7 +43,7 @@ ChipList(
             inactiveTextColorList: [],
             activeBorderColorList: [],
             inactiveBorderColorList: [],
-            listOfChipIndicesCurrentlySeclected: [],
+            listOfChipIndicesCurrentlySelected: [],
           ),
 ```
 &nbsp;
@@ -60,7 +60,7 @@ If you want to have full control of the parameters specified above over each and
 
 Use a single color if you want it to be used for all chips. Otherwise, the length of the list must be equal to the length of `listOfChipNames`.
 
-Note that if you don't, then the package has defaults as specified in the documentation. (You can hover over the property  in your IDE to see more 🙂).
+Note that if you don't, then the package has defaults as specified in the documentation. (You can hover over the property in your IDE to see more 🙂).
 
 ## Spacing in between each `Chip`
 Whether you choose to let the axis to `Axis.vertical` or `Axis.horizontal`, you can set the spacing by tweaking `widgetSpacing`.
@@ -73,13 +73,19 @@ Whether you choose to let the axis to `Axis.vertical` or `Axis.horizontal`, you 
 
 &nbsp;
 
-# ⚠ Warning !
+# ⚠ Warning !!!!!!!!!
 
 The `flutter_lints` package might suggest that you make `listOfChipIndicesCurrentlySeclected` a constant.
 
-PLEASE DO NOT DO SO. The widget will not respond to user interaction, seemingly without any reason.
+PLEASE DO NOT DO SO. 
+
+The widget will not respond to user interaction, seemingly without any reason. 
+
+The whole point of the API being designed like this is so that you have direct access to the currently selected indices, without the need for any state management and such. 
 
 That list will be updated as the user interacts with the widget. It is intended to be used in case you would like to incorporate the contents for any logic. 
+
+For an example, look at the section title "using extraOnToggle" in the provided example. The index is used to display the currently selected indice's label elsewhere in the UI.
 
 &nbsp;
 
@@ -216,5 +222,5 @@ class _HomePageState extends State<HomePage> {
 # Additional stuff
 
 Found an issue ? [Please let me know !](https://github.com/bossbeagle1509/chip_list/issues)
-Feel like creating a PR ? Yes please ! All contributions are welcome :)
+Feel like creating a PR? Yes please! All contributions are welcome :)
 
