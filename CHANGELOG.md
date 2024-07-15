@@ -66,3 +66,6 @@
 - added ability to have no chips selected when [supportsMultiSelect] is false
 - code clean up
 - Updated README.md
+
+## 3.1.0
+- Added new attribute: `chipListDisabled`

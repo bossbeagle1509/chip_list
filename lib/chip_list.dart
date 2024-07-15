@@ -13,40 +13,41 @@ typedef OnToggle = void Function(int index);
 /// multiple chips can be selected at once.
 // ignore: must_be_immutable
 class ChipList extends StatefulWidget {
-ChipList(
-      {Key? key,
-      required this.listOfChipNames,
-      required this.listOfChipIndicesCurrentlySelected,
-      this.activeTextColorList = const [Colors.white],
-      this.inactiveTextColorList = const [Colors.blue],
-      this.activeBgColorList = const [Colors.blue],
-      this.inactiveBgColorList = const [Colors.white],
-      this.style,
-      this.inactiveBorderColorList = const [Colors.white],
-      this.activeBorderColorList = const [Colors.white],
-      this.borderRadiiList = const [15],
-      this.supportsMultiSelect = false,
-      this.extraOnToggle,
-      this.shouldWrap = false,
-      this.scrollPhysics,
-      this.mainAxisAlignment = MainAxisAlignment.center,
-      this.wrapAlignment = WrapAlignment.start,
-      this.wrapCrossAlignment = WrapCrossAlignment.start,
-      this.axis = Axis.horizontal,
-      this.runAlignment = WrapAlignment.start,
-      this.runSpacing = 0.0,
-      this.spacing = 0.0,
-      this.textDirection,
-      this.verticalDirection = VerticalDirection.down,
-      this.padding = EdgeInsets.zero,
-      this.widgetSpacing = 4,
-      this.checkmarkColor,
-      this.showCheckmark = true,
-      this.elevation = 0,
-      this.tooltips = const [""],
-      this.shadowColor = const [Colors.transparent],
-      this.selectedShadowColor = const [Colors.black]})
-      : super(key: key);
+  ChipList({
+    Key? key,
+    required this.listOfChipNames,
+    required this.listOfChipIndicesCurrentlySelected,
+    this.activeTextColorList = const [Colors.white],
+    this.inactiveTextColorList = const [Colors.blue],
+    this.activeBgColorList = const [Colors.blue],
+    this.inactiveBgColorList = const [Colors.white],
+    this.style,
+    this.inactiveBorderColorList = const [Colors.white],
+    this.activeBorderColorList = const [Colors.white],
+    this.borderRadiiList = const [15],
+    this.supportsMultiSelect = false,
+    this.extraOnToggle,
+    this.shouldWrap = false,
+    this.scrollPhysics,
+    this.mainAxisAlignment = MainAxisAlignment.center,
+    this.wrapAlignment = WrapAlignment.start,
+    this.wrapCrossAlignment = WrapCrossAlignment.start,
+    this.axis = Axis.horizontal,
+    this.runAlignment = WrapAlignment.start,
+    this.runSpacing = 0.0,
+    this.spacing = 0.0,
+    this.textDirection,
+    this.verticalDirection = VerticalDirection.down,
+    this.padding = EdgeInsets.zero,
+    this.widgetSpacing = 4,
+    this.checkmarkColor,
+    this.showCheckmark = true,
+    this.elevation = 0,
+    this.tooltips = const [""],
+    this.shadowColor = const [Colors.transparent],
+    this.selectedShadowColor = const [Colors.black],
+    this.chipListDisabled = false,
+  }) : super(key: key);
 
   /// In case you chain some *more* logic to this widget's
   /// onTap event (maybe trigger updation of other UI components).
@@ -293,6 +294,11 @@ ChipList(
   ///
   /// Defaults to [Colors.black].
   List<Color> selectedShadowColor;
+
+  /// If you want to disable the list altogether, set this to `true`.
+  ///
+  /// Defaults to `false`.
+  bool chipListDisabled;
 
   @override
   State<ChipList> createState() => _ChipListState();
@@ -572,21 +578,23 @@ class _ChipListState extends State<ChipList> {
               : widget.inactiveBgColorList[index],
           selected: _checkChipSelectionStatus(index),
           selectedColor: _tileColorizer(index),
-          onSelected: (val) {
-            // update other chips depending on value of [supportsMultiSelect]
-            _handleOnSelected(index);
+          onSelected: widget.chipListDisabled
+              ? null
+              : (val) {
+                  // update other chips depending on value of [supportsMultiSelect]
+                  _handleOnSelected(index);
 
-            if (widget.extraOnToggle != null) {
-              widget.extraOnToggle!(index);
+                  if (widget.extraOnToggle != null) {
+                    widget.extraOnToggle!(index);
 
-              // prevents further execution,
-              // thus ensuring setState is not called.
-              return;
-            }
+                    // prevents further execution,
+                    // thus ensuring setState is not called.
+                    return;
+                  }
 
-            // update UI
-            setState(() {});
-          },
+                  // update UI
+                  setState(() {});
+                },
         ),
       ),
     );
